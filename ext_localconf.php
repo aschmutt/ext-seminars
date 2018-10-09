@@ -178,3 +178,15 @@ $iconRegistry->registerIcon(
     <INCLUDE_TYPOSCRIPT: source="FILE:EXT:seminars/Configuration/TSconfig/ContentElementWizard.txt">
 '
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'OliverKlee.seminars',
+    'Pi3',
+    [
+        'Seminar' => 'list'
+    ],
+    // non-cacheable actions
+    [
+        'Seminar' => ''
+    ]
+);

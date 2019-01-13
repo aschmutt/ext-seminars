@@ -1,17 +1,4 @@
 /*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-
-/*
  * This file provides some JavaScript functions for the seminars front-end
  * editor and the registration form.
  *
@@ -402,7 +389,7 @@ TYPO3.seminars.disableAllActionLinks = function () {
 TYPO3.seminars.preventMultipleFormSubmit = function () {
     var submitForm = document.getElementById('tx_seminars_pi1_registration_editor');
     var submitButton = document.getElementById('tx_seminars_pi1_registration_editor__button_submit');
-    submitForm.addEventListener('submit', function(event) {
+    submitForm.addEventListener('submit', function (event) {
         if (submitButton.hasAttribute('disabled')) {
             event.preventDefault();
         }

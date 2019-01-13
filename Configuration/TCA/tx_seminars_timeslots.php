@@ -39,8 +39,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime, required',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'end_date' => [
@@ -50,8 +49,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'entry_date' => [
@@ -61,8 +59,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'speakers' => [
@@ -71,8 +68,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_speakers',
                 'foreign_table' => 'tx_seminars_speakers',
                 'foreign_table_where' => 'ORDER BY title',
                 'size' => 10,
@@ -87,10 +82,9 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_sites',
                 'foreign_table' => 'tx_seminars_sites',
                 'foreign_table_where' => 'ORDER BY title',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,

@@ -27,7 +27,7 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'title' => [
@@ -76,7 +76,6 @@ $tca = [
                 'type' => 'input',
                 'size' => 15,
                 'max' => 255,
-                'checkbox' => '',
                 'eval' => 'trim',
             ],
         ],
@@ -96,8 +95,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_skills',
                 'foreign_table' => 'tx_seminars_skills',
                 'foreign_table_where' => 'ORDER BY title',
                 'size' => 10,
@@ -177,7 +174,6 @@ $tca = [
                 'size' => 3,
                 'max' => 3,
                 'eval' => 'num',
-                'checkbox' => '0',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -191,6 +187,7 @@ $tca = [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'fe_users',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -207,7 +204,6 @@ if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(
 } else {
     $tca['columns']['description']['defaultExtras'] = 'richtext[]';
     $tca['columns']['homepage']['config']['wizards'] = [
-        '_PADDING' => 2,
         'link' => [
             'type' => 'popup',
             'title' => 'Link',

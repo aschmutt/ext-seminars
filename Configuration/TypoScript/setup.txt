@@ -14,21 +14,26 @@
 plugin.tx_seminars_pi3 {
 
     view {
-        templateRootPaths.0 = EXT:seminars/Resources/Private/Templates/
+        templateRootPaths.0 = EXT:seminars/Resources/Private/Templates/Pi3/
         templateRootPaths.1 = {$plugin.tx_seminars_pi3.view.templateRootPath}
-        partialRootPaths.0 = EXT:seminars/Resources/Private/Partials/
+        partialRootPaths.0 = EXT:seminars/Resources/Private/Partials/Pi3/
         partialRootPaths.1 = {$plugin.tx_seminars_pi3.view.partialRootPath}
-        layoutRootPaths.0 = EXT:seminars/Resources/Private/Layouts/
+        layoutRootPaths.0 = EXT:seminars/Resources/Private/Layouts/Pi3/
         layoutRootPaths.1 = {$plugin.tx_seminars_pi3.view.layoutRootPath}
     }
     persistence {
         storagePid = {$plugin.tx_seminars_pi3.persistence.storagePid}
-        #recursive = 1
     }
-    features {
-        #skipDefaultArguments = 1
-    }
-    mvc {
-        #callDefaultActionIfActionCantBeResolved = 1
+    settings {
+        detailPID =
+        pages =
+        recursive = 0
+        limitListViewToEventTypes =
+        limitListViewToCategories =
+        limitListViewToPlaces =
+        limitListViewToOrganizers =
+        showOnlyEventsWithVacancies =
+        hidePageBrowser =
+        showSingleEvent =
     }
 }

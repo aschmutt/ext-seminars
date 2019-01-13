@@ -39,6 +39,14 @@ class Tx_Seminars_Model_Event extends \Tx_Seminars_Model_AbstractTimeSpan
     const STATUS_CONFIRMED = 2;
 
     /**
+     * @return \Tx_Oelib_Configuration
+     */
+    protected function getConfiguration()
+    {
+        return \Tx_Oelib_ConfigurationRegistry::get('plugin.tx_seminars');
+    }
+
+    /**
      * Returns whether this event is a single event.
      *
      * @return bool TRUE if this event is a single event, FALSE otherwise
@@ -405,6 +413,25 @@ class Tx_Seminars_Model_Event extends \Tx_Seminars_Model_AbstractTimeSpan
     public function hasRegistrationDeadline()
     {
         return $this->hasInteger('deadline_registration');
+    }
+
+    /**
+     * Returns the latest date/time to register for a seminar.
+     * This is either the registration deadline (if set) or the begin date of an
+     * event.
+     *
+     * @return int the latest possible moment to register for this event
+     */
+    public function getLatestPossibleRegistrationTimeAsUnixTimeStamp()
+    {
+        if ($this->hasRegistrationDeadline()) {
+            return $this->getRegistrationDeadlineAsUnixTimeStamp();
+        }
+        if ($this->hasEndDate() && $this->getConfiguration()->getAsBoolean('allowRegistrationForStartedEvents')) {
+            return $this->getEndDateAsUnixTimeStamp();
+        }
+
+        return $this->getBeginDateAsUnixTimeStamp();
     }
 
     /**
@@ -2147,4 +2174,48 @@ class Tx_Seminars_Model_Event extends \Tx_Seminars_Model_AbstractTimeSpan
 
         $this->setAsInteger('date_of_last_registration_digest', $date);
     }
+
+    /** Pi3: Temporary Data - discuss where to store this **/
+
+    /** @var string $detailUri */
+    protected $detailUri = '';
+
+    /**
+     * @return string
+     */
+    public function getDetailUri()
+    {
+        return $this->detailUri;
+    }
+
+    /**
+     * @param string $detailUri
+     * @return void
+     */
+    public function setDetailUri($detailUri)
+    {
+        $this->detailUri = $detailUri;
+    }
+
+    /**
+     * load FAL image
+     * @return array of FAL images
+     */
+    public function getImageFal()
+    {
+        return $this->isEventDate()
+            ? $this->getTopic()->getImageFal()
+            : Tx_Seminars_Pi3Helper::loadFalFiles('tx_seminars_seminars', 'image_fal', $this->getUid());
+    }
+
+    /**
+     * load FAL attachedFiles
+     * @return array of FAL files
+     */
+    public function getAttachedFilesFal()
+    {
+        return Tx_Seminars_Pi3Helper::loadFalFiles('tx_seminars_seminars','attached_files_fal', $this->getUid());
+    }
+
+
 }

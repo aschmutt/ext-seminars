@@ -14,7 +14,7 @@ return [
         'searchFields' => 'title',
     ],
     'interface' => [
-        'showRecordFieldList' => 'title, icon, single_view_page',
+        'showRecordFieldList' => 'title, icon, icon_fal, single_view_page',
     ],
     'columns' => [
         'title' => [
@@ -40,6 +40,30 @@ return [
                 'maxitems' => 1,
             ],
         ],
+        'icon_fal' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_pi3.xlf:tx_seminars_categories.icon_fal',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('icon_fal', [
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'appearance' => [
+                    'showPossibleLocalizationRecords' => true,
+                    'showRemovedLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the imageoverlayPalette instead of the basicoverlayPalette
+                'foreign_match_fields' => [
+                    'fieldname' => 'icon_fal',
+                    'tablenames' => 'tx_seminars_categories',
+                    'table_local' => 'sys_file',
+                ],
+                'minitems' => 0,
+                'maxitems' => 1,
+            ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'])
+        ],
         'single_view_page' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_categories.single_view_page',
@@ -47,6 +71,7 @@ return [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'pages',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -54,6 +79,6 @@ return [
         ],
     ],
     'types' => [
-        '0' => ['showitem' => 'title, icon, single_view_page'],
+        '0' => ['showitem' => 'title, icon, icon_fal, single_view_page'],
     ],
 ];

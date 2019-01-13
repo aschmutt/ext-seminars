@@ -33,7 +33,6 @@ return [
                 'type' => 'input',
                 'size' => 3,
                 'eval' => 'int',
-                'checkbox' => '0',
                 'range' => [
                     'lower' => 0,
                     'upper' => 199,
@@ -47,7 +46,6 @@ return [
                 'type' => 'input',
                 'size' => 3,
                 'eval' => 'int',
-                'checkbox' => '0',
                 'range' => [
                     'lower' => 0,
                     'upper' => 199,
@@ -61,6 +59,7 @@ return [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'fe_users',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,

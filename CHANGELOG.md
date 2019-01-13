@@ -6,6 +6,42 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## x.y.z
 
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+- Remove unsupported properties from TCA type "select" (#191)
+
+### Fixed
+- Allow hiding the unregistration notice in the thank-you email (#185)
+- Add more common files to the `.gitignore` (#184)
+
+## 2.1.2
+
+### Changed
+- Copy some registration-related methods to the new Event model (#176)
+- Clean up the extension icon SVG file (#171)
+- Replace the last tabs with spaces (#170)
+- Streamline ext_emconf.php (#168)
+
+### Fixed
+- Hide the number of vacancies after the registration deadline (#177)
+- Also provide the extension icon in `Resources/` (#175)
+
+## 2.1.1
+
+### Removed
+- Remove obsolete "checkbox" options from the TCA (#166)
+
+### Fixed
+- Fix SQL errors in MySQL strict mode (#165)
+
+## 2.1.0
+
+### Added
+- Auto-release to the TER (#153)
 - New hook interface and RegistrationEmailHookInterface (#150)
 - New hook to post process attendee email in registration manager (#150)
 - New hook to post process attendee email text in registration manager (#150)
@@ -28,6 +64,11 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 - Remove the print functionality from the BE module (#119)
 
 ### Fixed
+- Don't HTML-encode the data from the FE editor on saving (#162)
+- Fix the inclusion of the JavaScript file (#161)
+- Remove the deprecated _PADDING from TCEforms wizards (#160)
+- Use the current composer names of static_info_tables (#159)
+- Add a conflict with a PHP-7.0-incompatible static_info_tables version (#156)
 - Update the composer package name of static-info-tables (#149)
 - Fix crash in the CSV download (#140, #141)
 - Make event.timeslots an integer DB field (#138)

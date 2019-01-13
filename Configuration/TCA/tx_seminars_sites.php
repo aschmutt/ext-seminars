@@ -73,7 +73,6 @@ $tca = [
                 'type' => 'input',
                 'size' => 15,
                 'max' => 255,
-                'checkbox' => '',
                 'eval' => 'trim',
             ],
         ],
@@ -103,6 +102,7 @@ $tca = [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'fe_users',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -119,7 +119,6 @@ if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(
 } else {
     $tca['columns']['directions']['defaultExtras'] = 'richtext[]';
     $tca['columns']['homepage']['config']['wizards'] = [
-        '_PADDING' => 2,
         'link' => [
             'type' => 'popup',
             'title' => 'Link',

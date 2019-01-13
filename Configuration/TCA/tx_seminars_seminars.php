@@ -39,7 +39,7 @@ $tca = [
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type',
             'config' => [
                 'type' => 'radio',
-                'default' => '0',
+                'default' => 0,
                 'items' => [
                     [
                         'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.object_type.I.0',
@@ -71,11 +71,10 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_seminars',
                 'foreign_table' => 'tx_seminars_seminars',
                 // only allow for topic records and complete event records, but not for date records
                 'foreign_table_where' => 'AND (tx_seminars_seminars.object_type = 0 OR tx_seminars_seminars.object_type = 1) ORDER BY title',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 1,
                 'maxitems' => 1,
@@ -96,8 +95,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_categories',
                 'foreign_table' => 'tx_seminars_categories',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -112,8 +109,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_seminars',
                 'foreign_table' => 'tx_seminars_seminars',
                 'foreign_table_where' => 'AND tx_seminars_seminars.uid <> ###THIS_UID### AND object_type = 1 ORDER BY title',
                 'size' => 10,
@@ -128,8 +123,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_seminars',
                 'foreign_table' => 'tx_seminars_seminars',
                 'foreign_table_where' => 'AND tx_seminars_seminars.uid <> ###THIS_UID### AND object_type = 1 ORDER BY title',
                 'size' => 10,
@@ -164,10 +157,9 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_event_types',
                 'foreign_table' => 'tx_seminars_event_types',
                 'foreign_table_where' => ' ORDER BY title',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -191,7 +183,6 @@ $tca = [
                 'size' => 3,
                 'max' => 3,
                 'eval' => 'int',
-                'checkbox' => '0',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -206,8 +197,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'end_date' => [
@@ -217,8 +207,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'time_zone' => [
@@ -253,8 +242,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'deadline_registration' => [
@@ -265,8 +253,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'deadline_early_bird' => [
@@ -277,8 +264,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'deadline_unregistration' => [
@@ -289,8 +275,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'expiry' => [
@@ -300,8 +285,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 10,
                 'eval' => 'date',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'details_page' => [
@@ -311,7 +295,6 @@ $tca = [
                 'type' => 'input',
                 'size' => 15,
                 'max' => 255,
-                'checkbox' => '',
                 'eval' => 'trim',
             ],
         ],
@@ -321,8 +304,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_sites',
                 'foreign_table' => 'tx_seminars_sites',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -346,8 +327,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_lodgings',
                 'foreign_table' => 'tx_seminars_lodgings',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -362,8 +341,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_foods',
                 'foreign_table' => 'tx_seminars_foods',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -378,8 +355,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_speakers',
                 'foreign_table' => 'tx_seminars_speakers',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -394,8 +369,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_speakers',
                 'foreign_table' => 'tx_seminars_speakers',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -410,8 +383,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_speakers',
                 'foreign_table' => 'tx_seminars_speakers',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -426,8 +397,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_speakers',
                 'foreign_table' => 'tx_seminars_speakers',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -457,7 +426,6 @@ $tca = [
                 'size' => 10,
                 'max' => 10,
                 'eval' => 'double2',
-                'checkbox' => '0.00',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -479,7 +447,6 @@ $tca = [
                 'size' => 10,
                 'max' => 10,
                 'eval' => 'double2',
-                'checkbox' => '0.00',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -496,7 +463,6 @@ $tca = [
                 'size' => 10,
                 'max' => 10,
                 'eval' => 'double2',
-                'checkbox' => '0.00',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -513,7 +479,6 @@ $tca = [
                 'size' => 10,
                 'max' => 10,
                 'eval' => 'double2',
-                'checkbox' => '0.00',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -535,7 +500,6 @@ $tca = [
                 'size' => 10,
                 'max' => 10,
                 'eval' => 'double2',
-                'checkbox' => '0.00',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -552,7 +516,6 @@ $tca = [
                 'size' => 10,
                 'max' => 10,
                 'eval' => 'double2',
-                'checkbox' => '0.00',
                 'range' => [
                     'upper' => '999999.99',
                     'lower' => '0.00',
@@ -577,8 +540,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_checkboxes',
                 'foreign_table' => 'tx_seminars_checkboxes',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -602,8 +563,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_payment_methods',
                 'foreign_table' => 'tx_seminars_payment_methods',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 5,
@@ -618,8 +577,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_organizers',
                 'foreign_table' => 'tx_seminars_organizers',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 5,
@@ -634,8 +591,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_organizers',
                 'foreign_table' => 'tx_seminars_organizers',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -687,7 +642,6 @@ $tca = [
                 'size' => 4,
                 'max' => 4,
                 'eval' => 'int',
-                'checkbox' => '0',
                 'range' => [
                     'upper' => 9999,
                     'lower' => 0,
@@ -704,7 +658,6 @@ $tca = [
                 'size' => 4,
                 'max' => 4,
                 'eval' => 'int',
-                'checkbox' => '0',
                 'range' => [
                     'upper' => 9999,
                     'lower' => 0,
@@ -730,7 +683,6 @@ $tca = [
                 'size' => 3,
                 'max' => 3,
                 'eval' => 'int',
-                'checkbox' => '0',
                 'range' => [
                     'upper' => 999,
                     'lower' => 0,
@@ -762,8 +714,6 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'internal_type' => 'db',
-                'allowed' => 'tx_seminars_target_groups',
                 'foreign_table' => 'tx_seminars_target_groups',
                 'foreign_table_where' => ' ORDER BY title',
                 'size' => 10,
@@ -803,7 +753,7 @@ $tca = [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'default' => '0',
+                'default' => 0,
                 'items' => [
                     [
                         'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.cancelled_planned',
@@ -857,12 +807,40 @@ $tca = [
                 'autoSizeMax' => 40,
             ],
         ],
+        'attached_files_fal' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_pi3.xlf:tx_seminars_seminars.attached_files_fal',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('attached_files_fal',
+                [
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
+                    'appearance' => [
+                        'showPossibleLocalizationRecords' => true,
+                        'showRemovedLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true
+                    ],
+                    'inline' => [
+                        'inlineOnlineMediaAddButtonStyle' => 'display:none'
+                    ],
+                    'foreign_match_fields' => [
+                        'fieldname' => 'attached_files_fal',
+                        'tablenames' => 'tx_seminars_seminars',
+                        'table_local' => 'sys_file',
+                    ],
+                    'maxitems' => 200,
+                    'minitems' => 0,
+                    'autoSizeMax' => 40,
+                ]
+            )
+        ],
         'hidden' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:LGL.hidden',
             'config' => [
                 'type' => 'check',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
         'starttime' => [
@@ -872,8 +850,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 8,
                 'eval' => 'date',
-                'default' => '0',
-                'checkbox' => '0',
+                'default' => 0,
             ],
         ],
         'endtime' => [
@@ -883,8 +860,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 8,
                 'eval' => 'date',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
                 'range' => [
                     'upper' => mktime(0, 0, 0, 12, 31, 2020),
                     'lower' => mktime(0, 0, 0, date('m') - 1, date('d'), date('Y')),
@@ -898,6 +874,7 @@ $tca = [
                 'type' => 'group',
                 'internal_type' => 'db',
                 'allowed' => 'fe_users',
+                'default' => 0,
                 'size' => 1,
                 'minitems' => 0,
                 'maxitems' => 1,
@@ -930,6 +907,30 @@ $tca = [
                 'maxitems' => 1,
             ],
         ],
+        'image_fal' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_pi3.xlf:tx_seminars_seminars.image_fal',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image_fal', [
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'appearance' => [
+                    'showPossibleLocalizationRecords' => true,
+                    'showRemovedLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the imageoverlayPalette instead of the basicoverlayPalette
+                'foreign_match_fields' => [
+                    'fieldname' => 'image_fal',
+                    'tablenames' => 'tx_seminars_seminars',
+                    'table_local' => 'sys_file',
+                ],
+                'minitems' => 0,
+                'maxitems' => 99,
+            ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'])
+        ],
         'publication_hash' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.publication_hash',
@@ -957,8 +958,7 @@ $tca = [
                 'type' => 'input',
                 'size' => 12,
                 'eval' => 'datetime',
-                'checkbox' => '0',
-                'default' => '0',
+                'default' => 0,
             ],
         ],
     ],
@@ -966,7 +966,7 @@ $tca = [
         // Single event
         '0' => [
             'showitem' => '' .
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, categories, teaser, description, event_type, language, accreditation_number, credit_points, details_page, additional_information, checkboxes, uses_terms_2, cancelled, automatic_confirmation_cancelation, notes, attached_files, ' .
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, image_fal, categories, teaser, description, event_type, language, accreditation_number, credit_points, details_page, additional_information, checkboxes, uses_terms_2, cancelled, automatic_confirmation_cancelation, notes, attached_files, attached_files_fal, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelPlaceTime, begin_date, end_date, time_zone, timeslots, begin_date_registration, deadline_registration, deadline_early_bird, deadline_unregistration, place, room, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelSpeakers, speakers, partners, tutors, leaders, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelOrganizers, organizers, organizing_partners, event_takes_place_reminder_sent, cancelation_deadline_reminder_sent, ' .
@@ -978,7 +978,7 @@ $tca = [
         // Multiple event topic
         '1' => [
             'showitem' =>
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, categories, requirements, dependencies, teaser, description, event_type, credit_points, additional_information, checkboxes, uses_terms_2, notes, attached_files, ' .
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, image_fal, categories, requirements, dependencies, teaser, description, event_type, credit_points, additional_information, checkboxes, uses_terms_2, notes, attached_files, attached_files_fal, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAttendees, allows_multiple_registrations, target_groups, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelPayment, price_on_request, price_regular, price_regular_early, price_regular_board, price_special, price_special_early, price_special_board, payment_methods, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAccess, hidden, starttime, endtime',
@@ -986,7 +986,7 @@ $tca = [
         // Multiple event date
         '2' => [
             'showitem' =>
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, topic, language, accreditation_number, details_page, cancelled, automatic_confirmation_cancelation, notes, attached_files, ' .
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, topic, language, accreditation_number, details_page, cancelled, automatic_confirmation_cancelation, notes, attached_files, attached_files_fal' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelPlaceTime, begin_date, end_date, time_zone, timeslots, begin_date_registration, deadline_registration, deadline_early_bird, deadline_unregistration, expiry, place, room, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelSpeakers, speakers, partners, tutors, leaders, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelOrganizers, organizers, organizing_partners, event_takes_place_reminder_sent, cancelation_deadline_reminder_sent, ' .
@@ -1078,7 +1078,6 @@ if (\TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(
     $tca['columns']['description']['defaultExtras'] = 'richtext[]';
     $tca['columns']['additional_information']['defaultExtras'] = 'richtext[]';
     $tca['columns']['details_page']['config']['wizards'] = [
-        '_PADDING' => 2,
         'link' => [
             'type' => 'popup',
             'title' => 'Link',

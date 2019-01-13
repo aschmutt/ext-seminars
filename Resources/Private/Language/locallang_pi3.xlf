@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2016-07-18T21:20:33Z"
+          product-name="seminars">
+        <header/>
+        <body>
+            <trans-unit id="tt_content.list_type_pi3" xml:space="preserve">
+                <source>Seminar Manager (Extbase)</source>
+            </trans-unit>
+            <trans-unit id="pi3_description" xml:space="preserve">
+                <source>Use this plugin if you want to use the Extbase and Fluid templates</source>
+            </trans-unit>
+            <trans-unit id="seminars.pi_flexform.pageBrowserItemsPerPage" xml:space="preserve">
+                <source>Page Browser: Items per page</source>
+            </trans-unit>
+            <trans-unit id="tx_seminars_seminars.image_fal" xml:space="preserve">
+                <source>Image (Extbase)</source>
+            </trans-unit>
+            <trans-unit id="tx_seminars_seminars.attached_files_fal" xml:space="preserve">
+                <source>Attached Files (Extbase)</source>
+            </trans-unit>
+            <trans-unit id="tx_seminars_categories.icon_fal" xml:space="preserve">
+                <source>Icon (Extbase)</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

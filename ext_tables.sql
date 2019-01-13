@@ -287,7 +287,9 @@ CREATE TABLE tx_seminars_seminars (
     uses_terms_2 tinyint(1) unsigned DEFAULT '0' NOT NULL,
     notes text,
     attached_files text,
+    attached_files_fal int(11) unsigned DEFAULT '0' NOT NULL,
     image tinytext,
+    image_fal int(11) unsigned DEFAULT '0' NOT NULL,
     requirements int(11) unsigned DEFAULT '0' NOT NULL,
     dependencies int(11) unsigned DEFAULT '0' NOT NULL,
     publication_hash text,
@@ -754,6 +756,7 @@ CREATE TABLE tx_seminars_categories (
     is_dummy_record tinyint(1) unsigned DEFAULT '0' NOT NULL,
     title tinytext,
     icon tinytext,
+    icon_fal int(11) unsigned DEFAULT '0' NOT NULL,
     single_view_page int(11) unsigned DEFAULT '0' NOT NULL,
 
     PRIMARY KEY (uid),

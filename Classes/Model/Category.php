@@ -5,6 +5,7 @@
  *
  * @author Niels Pardon <mail@niels-pardon.de>
  * @author Oliver Klee <typo3-coding@oliverklee.de>
+ * @author Andrea Schmuttermair <andrea@schmutt.de>
  */
 class Tx_Seminars_Model_Category extends \Tx_Oelib_Model implements \Tx_Seminars_Interface_Titled
 {
@@ -88,4 +89,14 @@ class Tx_Seminars_Model_Category extends \Tx_Oelib_Model implements \Tx_Seminars
     {
         return $this->hasInteger('single_view_page');
     }
+
+    /**
+     * load FAL icon
+     * @return array FAL image array
+     */
+    public function getIconFal() {
+        $falList = Tx_Seminars_Pi3Helper::loadFalFiles('tx_seminars_categories','icon_fal', $this->getUid());
+        return $falList;
+    }
+
 }

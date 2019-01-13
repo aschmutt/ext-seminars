@@ -165,4 +165,115 @@ class Tx_Seminars_Mapper_Event extends \Tx_Oelib_DataMapper
 
         return $this->findByWhereClause($whereClause, 'begin_date ASC');
     }
+
+
+
+    /**
+     * @return \Tx_Oelib_List the \Tx_Oelib_List<Tx_Seminars_Model_Event>
+     */
+    public function findBySettings($settings) {
+        $whereClause = ' 1=1 ';
+
+        //Pages
+        if (strlen($settings['pages']) > 0) {
+            $pidArray = \Tx_Seminars_Pi3Helper::getUidArrayFromCommaSeparatedList($settings['pages']);
+            $recursive = (int)$settings['recursive'];
+            if ($recursive > 0) {
+                /** @var \TYPO3\CMS\Core\Database\QueryGenerator $queryGenerator */
+                $queryGenerator = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Core\\Database\\QueryGenerator' );
+                $pidArrayTemp = $pidArray;
+                foreach ($pidArray as $pid) {
+                    $recursivePidList = $queryGenerator->getTreeList($pid, $recursive, 0, 1); //Will be a string
+                    $pidArrayRecursive = \Tx_Seminars_Pi3Helper::getUidArrayFromCommaSeparatedList($recursivePidList);
+                    $pidArrayTemp = array_merge($pidArrayTemp, $pidArrayRecursive);
+                }
+                $pidArray = $pidArrayTemp;
+            }
+            $pidListString = implode(',',$pidArray);
+            $whereClause .= ' AND pid IN (' . $pidListString . ') ';
+        }
+
+        //Categories
+        if (strlen($settings['limitListViewToCategories']) > 0) {
+            $limitCategories = \Tx_Seminars_Pi3Helper::getUidArrayFromCommaSeparatedList($settings['limitListViewToCategories']);
+            $whereClause .= ' AND ( ';
+            foreach ($limitCategories as $categoryUid) {
+                $whereClause .= $categoryUid . ' IN ( SELECT uid_foreign FROM tx_seminars_seminars_categories_mm
+                    WHERE tx_seminars_seminars_categories_mm.uid_local = tx_seminars_seminars.uid) OR ';
+
+            }
+            $whereClause = rtrim ($whereClause, 'OR ');
+            $whereClause .= ' ) ';
+        }
+
+        //EventType
+        if (strlen($settings['limitListViewToEventTypes']) > 0) {
+            $limitEventTypes = \Tx_Seminars_Pi3Helper::getUidArrayFromCommaSeparatedList($settings['limitListViewToEventTypes']);
+            $whereClause .= ' AND ( ';
+            foreach ($limitEventTypes as $eventTypeUid) {
+                $whereClause .= ' event_type = ' . $eventTypeUid . ' OR ';
+            }
+            $whereClause = rtrim ($whereClause, 'OR ');
+            $whereClause .= ' ) ';
+        }
+
+        //Place
+        if (strlen($settings['limitListViewToPlaces']) > 0) {
+            $limitPlaces = \Tx_Seminars_Pi3Helper::getUidArrayFromCommaSeparatedList($settings['limitListViewToPlaces']);
+            $whereClause .= ' AND ( ';
+            foreach ($limitPlaces AS $placeUid) {
+                $whereClause .= $placeUid . ' IN ( SELECT uid_foreign FROM tx_seminars_seminars_place_mm
+                    WHERE tx_seminars_seminars_place_mm.uid_local = tx_seminars_seminars.uid) OR ';
+            }
+            $whereClause = rtrim ($whereClause, 'OR ');
+            $whereClause .= ' ) ';
+        }
+
+        //Organizer
+        if (strlen($settings['limitListViewToOrganizers']) > 0) {
+            $limitOrganizers = \Tx_Seminars_Pi3Helper::getUidArrayFromCommaSeparatedList($settings['limitListViewToOrganizers']);
+            $whereClause .= ' AND ( ';
+            foreach ($limitOrganizers as $organizerUid) {
+                $whereClause .= $organizerUid . ' IN ( SELECT uid_foreign FROM tx_seminars_seminars_organizers_mm
+                    WHERE tx_seminars_seminars_organizers_mm.uid_local = tx_seminars_seminars.uid) OR ';
+
+            }
+            $whereClause = rtrim ($whereClause, 'OR ');
+            $whereClause .= ' ) ';
+        }
+
+        return $this->findByWhereClause($whereClause);
+
+    }
+
+    /**
+     * @param \Tx_Oelib_List<Tx_Seminars_Model_Event> $events
+     * @param \TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder $uriBuilder
+     * @return \Tx_Oelib_List the \Tx_Oelib_List<Tx_Seminars_Model_Event>
+     */
+    public function addDetailUri($events, $settings, $uriBuilder) {
+
+        $pageUid = $settings['detailPID'];
+        if ((int)$pageUid == 0) {
+            $pageUid = $GLOBALS['TSFE']->id;
+        }
+
+        foreach ($events as $event) {
+            $uriBuilder->reset();
+            $uriBuilder->setTargetPageUid($pageUid);
+            $uriBuilder->setArguments(array(
+                'tx_seminars_pi3' => array(
+                    'eventUid' => $event->getUid(),
+                    'action' => 'show',
+                    'controller' => 'Event'
+                )
+            ));
+            $uri = $uriBuilder->build();
+            $event->setDetailUri($uri);
+        }
+
+        return $events;
+    }
+
+
 }

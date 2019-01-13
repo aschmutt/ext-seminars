@@ -807,6 +807,34 @@ $tca = [
                 'autoSizeMax' => 40,
             ],
         ],
+        'attached_files_fal' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_pi3.xlf:tx_seminars_seminars.attached_files_fal',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('attached_files_fal',
+                [
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
+                    'appearance' => [
+                        'showPossibleLocalizationRecords' => true,
+                        'showRemovedLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true
+                    ],
+                    'inline' => [
+                        'inlineOnlineMediaAddButtonStyle' => 'display:none'
+                    ],
+                    'foreign_match_fields' => [
+                        'fieldname' => 'attached_files_fal',
+                        'tablenames' => 'tx_seminars_seminars',
+                        'table_local' => 'sys_file',
+                    ],
+                    'maxitems' => 200,
+                    'minitems' => 0,
+                    'autoSizeMax' => 40,
+                ]
+            )
+        ],
         'hidden' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:LGL.hidden',
@@ -879,6 +907,30 @@ $tca = [
                 'maxitems' => 1,
             ],
         ],
+        'image_fal' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_pi3.xlf:tx_seminars_seminars.image_fal',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image_fal', [
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'appearance' => [
+                    'showPossibleLocalizationRecords' => true,
+                    'showRemovedLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the imageoverlayPalette instead of the basicoverlayPalette
+                'foreign_match_fields' => [
+                    'fieldname' => 'image_fal',
+                    'tablenames' => 'tx_seminars_seminars',
+                    'table_local' => 'sys_file',
+                ],
+                'minitems' => 0,
+                'maxitems' => 99,
+            ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'])
+        ],
         'publication_hash' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.publication_hash',
@@ -914,7 +966,7 @@ $tca = [
         // Single event
         '0' => [
             'showitem' => '' .
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, categories, teaser, description, event_type, language, accreditation_number, credit_points, details_page, additional_information, checkboxes, uses_terms_2, cancelled, automatic_confirmation_cancelation, notes, attached_files, ' .
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, image_fal, categories, teaser, description, event_type, language, accreditation_number, credit_points, details_page, additional_information, checkboxes, uses_terms_2, cancelled, automatic_confirmation_cancelation, notes, attached_files, attached_files_fal, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelPlaceTime, begin_date, end_date, time_zone, timeslots, begin_date_registration, deadline_registration, deadline_early_bird, deadline_unregistration, place, room, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelSpeakers, speakers, partners, tutors, leaders, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelOrganizers, organizers, organizing_partners, event_takes_place_reminder_sent, cancelation_deadline_reminder_sent, ' .
@@ -926,7 +978,7 @@ $tca = [
         // Multiple event topic
         '1' => [
             'showitem' =>
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, categories, requirements, dependencies, teaser, description, event_type, credit_points, additional_information, checkboxes, uses_terms_2, notes, attached_files, ' .
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelGeneral, object_type, title, subtitle, image, image_fal, categories, requirements, dependencies, teaser, description, event_type, credit_points, additional_information, checkboxes, uses_terms_2, notes, attached_files, attached_files_fal, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAttendees, allows_multiple_registrations, target_groups, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelPayment, price_on_request, price_regular, price_regular_early, price_regular_board, price_special, price_special_early, price_special_board, payment_methods, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db.xlf:tx_seminars_seminars.divLabelAccess, hidden, starttime, endtime',
@@ -934,7 +986,7 @@ $tca = [
         // Multiple event date
         '2' => [
             'showitem' =>
-                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, topic, language, accreditation_number, details_page, cancelled, automatic_confirmation_cancelation, notes, attached_files, ' .
+                '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelGeneral, object_type, title, topic, language, accreditation_number, details_page, cancelled, automatic_confirmation_cancelation, notes, attached_files, attached_files_fal' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelPlaceTime, begin_date, end_date, time_zone, timeslots, begin_date_registration, deadline_registration, deadline_early_bird, deadline_unregistration, expiry, place, room, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelSpeakers, speakers, partners, tutors, leaders, ' .
                 '--div--;LLL:EXT:seminars/Resources/Private/Language/locallang_db:tx_seminars_seminars.divLabelOrganizers, organizers, organizing_partners, event_takes_place_reminder_sent, cancelation_deadline_reminder_sent, ' .

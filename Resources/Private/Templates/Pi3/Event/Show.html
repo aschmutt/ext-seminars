@@ -1,0 +1,26 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="DefaultLayout" />
+
+<f:section name="main">
+
+    <f:if condition="{event}">
+        <f:then>
+            <div class="event-show">
+                <h3>{event.title}</h3>
+                <f:if condition="{event.subtitle}"><h4>{event.subtitle}</h4></f:if>
+                <f:format.html>{event.description}</f:format.html>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="event--notfound">
+
+            </div>
+        </f:else>
+    </f:if>
+
+
+
+
+</f:section>

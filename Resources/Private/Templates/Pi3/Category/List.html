@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="DefaultLayout" />
+
+<f:section name="main">
+
+    <div class="category-list">
+
+        <f:for each="{categories}" as="category">
+            <div class="category-list__item">
+                <f:for each="{category.iconFal}" as="image">
+                    <f:image image="{image}" width="200m" height="200m"/>
+                </f:for>
+                <h3>{category.title}</h3>
+            </div>
+        </f:for>
+
+    </div>
+
+</f:section>

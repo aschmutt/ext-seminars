@@ -79,3 +79,4 @@ users to sign up. FE users also can create and edit events.
 Most of the documentation is in ReST format
 [in the Documentation/ folder](Documentation/) and is rendered
 [as part of the TYPO3 documentation](https://docs.typo3.org/typo3cms/extensions/seminars/).
+

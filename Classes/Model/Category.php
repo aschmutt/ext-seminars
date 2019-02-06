@@ -42,7 +42,7 @@ class Tx_Seminars_Model_Category extends \Tx_Oelib_Model implements \Tx_Seminars
      *                upload path) of the category, will be empty if the
      *                category has no icon
      */
-    public function getIcon()
+    public function getLegacyIcon()
     {
         return $this->getAsString('icon');
     }

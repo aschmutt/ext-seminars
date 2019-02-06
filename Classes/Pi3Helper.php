@@ -9,12 +9,14 @@ class Tx_Seminars_Pi3Helper
 {
 
     /**
+     * @todo: \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode()
      * @param string $commaSeparatedList
      * @return array
      */
     public static function getUidArrayFromCommaSeparatedList($commaSeparatedList)
     {
         $result = array();
+
         $inputArray = explode(',', $commaSeparatedList);
 
         foreach ($inputArray as $value) {
@@ -37,6 +39,13 @@ class Tx_Seminars_Pi3Helper
      */
     public static function loadFalFiles($tablename, $fieldname, $uid)
     {
+        /*Ersetzen durch Core Funktion
+         * \TYPO3\CMS\Core\Resource\FileRepository
+
+
+        findByRelation
+        */
+
         /**@var \TYPO3\CMS\Core\Database\Query\QueryBuilder $queryBuilder */
         $queryBuilder = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\ConnectionPool::class)
             ->getQueryBuilderForTable('sys_file_reference');

@@ -74,7 +74,7 @@ class Tx_Seminars_Tests_Unit_Model_CategoryTest extends \Tx_Phpunit_TestCase
 
         self::assertEquals(
             '',
-            $this->fixture->getIcon()
+            $this->fixture->getLegacyIcon()
         );
     }
 
@@ -87,7 +87,7 @@ class Tx_Seminars_Tests_Unit_Model_CategoryTest extends \Tx_Phpunit_TestCase
 
         self::assertEquals(
             'icon.gif',
-            $this->fixture->getIcon()
+            $this->fixture->getLegacyIcon()
         );
     }
 
@@ -100,7 +100,7 @@ class Tx_Seminars_Tests_Unit_Model_CategoryTest extends \Tx_Phpunit_TestCase
 
         self::assertEquals(
             'icon.gif',
-            $this->fixture->getIcon()
+            $this->fixture->getLegacyIcon()
         );
     }
 
